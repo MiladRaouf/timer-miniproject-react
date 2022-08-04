@@ -1,0 +1,20 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #ddd;
+}
+
+.timer-parent{
+    margin: 100px auto;
+    text-align: center;
+    color: #444;
+}
+
+.timer-parent>:last-child{
+    margin-top: 15px;
+    font-size: 4em;
+}
