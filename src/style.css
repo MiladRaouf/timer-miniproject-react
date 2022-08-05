@@ -17,33 +17,38 @@ body {
 
 .timer-parent>:last-child {
     margin-top: 15px;
-    font-size: 4em;
+    font-size: 3em;
 }
 
 .button-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 .button-box>button {
     background: #0078AA;
     border-radius: 8px;
-    padding: 8px 3px;
+    padding: 10px 3px;
     transition: 0.2s;
     width: 100px;
     text-align: center;
     border: none;
     color: #fff;
     cursor: pointer;
-    font-size: 0.3em;
+    font-size: 0.4em;
+    margin: 0 5px;
 }
 
 .button-box>button:hover {
     background: #1363DF;
 }
 
-.button-box> :first-child {
-    margin-right: 10px;
+.button-box>:last-child {
+    background: #F15412;
+}
+
+.button-box>:last-child:hover {
+    background: #E83A14;
 }

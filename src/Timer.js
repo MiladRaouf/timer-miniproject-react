@@ -7,39 +7,70 @@ class Timer extends React.Component {
     constructor() {
         super();
         this.state = {
-            time: 60
+            hour: 0,
+            minute: 0,
+            second: 0,
+            runTime: false,
         }
     }
 
     runTimer = () => {
-        interval = setInterval(() => {
+        if (this.state.runTime == false) {
             this.setState({
-                time: Number(this.state.time) - 1
+                runTime: true
             });
-        }, 1000);
+
+            interval = setInterval(() => {
+                this.setState({
+                    second: this.state.second + 1
+                });
+
+                if (this.state.second == 60) {
+                    this.setState({
+                        minute: this.state.minute + 1,
+                        second: 0
+                    });
+                }
+
+                if (this.state.minute == 60) {
+                    this.setState({
+                        hour: this.state.hour + 1,
+                        minute: 0
+                    });
+                }
+            }, 1000);
+        }
     };
 
     stopTimer = () => {
+        this.setState({
+            runTime: false
+        });
         clearInterval(interval);
     };
 
-    componentDidMount() {
-        this.runTimer();
-    }
+    resetTimer = () => {
+        this.stopTimer();
 
-    componentDidUpdate() {
-        if (this.state.time == 0) {
-            this.stopTimer();
-        }
-    }
+        this.setState({
+            hour: 0,
+            minute: 0,
+            second: 0
+        });
+    };
 
     render() {
+        let h = this.state.hour;
+        let m = this.state.minute;
+        let s = this.state.second;
+
         return (
             <div>
-                <h1>{this.state.time}</h1>
+                <h1>{`${h < 10 ? '0' + h : h} : ${m < 10 ? '0' + m : m} : ${s < 10 ? '0' + s : s}`}</h1>
                 <div className='button-box'>
                     <button onClick={this.runTimer}>Start</button>
                     <button onClick={this.stopTimer}>Stop</button>
+                    <button onClick={this.resetTimer}>Reset</button>
                 </div>
             </div>
         );
