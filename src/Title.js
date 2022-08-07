@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 class Title extends React.Component {
   render() {
     return (
-      <h1>Timer</h1>
+      <h1>{this.props.title}</h1>
     );
   }
 }

@@ -28,11 +28,9 @@ body {
 }
 
 .button-box>button {
-    background: #0078AA;
     border-radius: 8px;
-    padding: 10px 3px;
+    padding: 10px;
     transition: 0.2s;
-    width: 100px;
     text-align: center;
     border: none;
     color: #fff;
@@ -41,14 +39,34 @@ body {
     margin: 0 5px;
 }
 
-.button-box>button:hover {
+.button-box>.start,
+.button-box>.stop{
+    background: #0078AA;
+    width: 100px;
+}
+
+.button-box>.start:hover,
+.button-box>.stop:hover {
     background: #1363DF;
 }
 
-.button-box>:last-child {
+.button-box>.reset {
     background: #F15412;
+    width: 100px;
 }
 
-.button-box>:last-child:hover {
+.button-box>.reset:hover {
     background: #E83A14;
+}
+
+.button-box>.change-background.dark{
+    background: #444;
+    color: #fff;
+    transition: 0.2s;
+}
+
+.button-box>.change-background.light{
+    background: #fff;
+    color: #444;
+    transition: 0.2s;
 }
