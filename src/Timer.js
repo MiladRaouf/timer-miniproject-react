@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import TimeList from "./TimeList";
 
 let interval;
 
@@ -59,6 +60,15 @@ class Timer extends React.Component {
         });
     };
 
+    handleSaveTime = ()=>{
+        let h = this.state.hour;
+        let m = this.state.minute;
+        let s = this.state.second;
+        let nowTime = `${h < 10 ? '0' + h : h} : ${m < 10 ? '0' + m : m} : ${s < 10 ? '0' + s : s}`;
+
+        this.props.setTimeArr([...this.props.timeArr, nowTime]);
+    };
+
     render() {
         let h = this.state.hour;
         let m = this.state.minute;
@@ -66,14 +76,18 @@ class Timer extends React.Component {
         let changeBackgroundClassName = this.props.isLight ? 'change-background dark' : 'change-background light';
 
         return (
-            <div>
-                <h1>{`${h < 10 ? '0' + h : h} : ${m < 10 ? '0' + m : m} : ${s < 10 ? '0' + s : s}`}</h1>
+            <div className='timer-box'>
+                <h1 className='timer' onClick={this.handleSaveTime}>{`${h < 10 ? '0' + h : h} : ${m < 10 ? '0' + m : m} : ${s < 10 ? '0' + s : s}`}</h1>
                 <div className='button-box'>
                     <button className={changeBackgroundClassName} onClick={this.props.isLightHandle}>Background Change</button>
                     <button className='start' onClick={this.runTimer}>Start</button>
                     <button className='stop' onClick={this.stopTimer}>Stop</button>
                     <button className='reset' onClick={this.resetTimer}>Reset</button>
                 </div>
+
+                <TimeList>
+                    {this.props.timeArr}
+                </TimeList>
             </div>
         );
     }

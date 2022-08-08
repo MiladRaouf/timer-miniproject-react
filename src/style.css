@@ -10,12 +10,18 @@ body {
 }
 
 .timer-parent {
-    margin: 100px auto;
+    padding: 0 30px;
+    margin: 80px auto;
     text-align: center;
     color: #444;
 }
 
-.timer-parent>:last-child {
+.timer {
+    user-select: none;
+    cursor: pointer;
+}
+
+.timer-parent>.timer-box {
     margin-top: 15px;
     font-size: 3em;
 }
@@ -40,7 +46,7 @@ body {
 }
 
 .button-box>.start,
-.button-box>.stop{
+.button-box>.stop {
     background: #0078AA;
     width: 100px;
 }
@@ -59,14 +65,37 @@ body {
     background: #E83A14;
 }
 
-.button-box>.change-background.dark{
+.button-box>.change-background.dark {
     background: #444;
     color: #fff;
     transition: 0.2s;
 }
 
-.button-box>.change-background.light{
+.button-box>.change-background.light {
     background: #fff;
     color: #444;
     transition: 0.2s;
+}
+
+.time-list-box {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.time-item-box {
+    padding: 10px 20px;
+    flex-basis: 25%;
+}
+
+.time-item {
+    display: block;
+    background: #fff;
+    color: #444;
+    padding: 5px 10px;
+    font-size: 1.3rem;
+    border-radius: 8px;
+    box-shadow: 0 0 3px 0 inset #777;
+    cursor: pointer;
 }
