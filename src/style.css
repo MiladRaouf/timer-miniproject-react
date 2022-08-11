@@ -19,6 +19,8 @@ body {
 .timer {
     user-select: none;
     cursor: pointer;
+    width: fit-content;
+    margin: 15px auto;
 }
 
 .timer-parent>.timer-box {

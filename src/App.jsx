@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Timer from './Timer';
 import Title from './Title';
 import TimeList from './TimeList';
+import { timerContext } from './TimerContext';
 import './style.css';
 
 
@@ -16,10 +17,13 @@ const App = () => {
     };
 
     return (
-        <div className='timer-parent'>
-            <Title title={title} />
-            <Timer isLight={isLight} isLightHandle={isLightHandle} timeArr={timeArr} setTimeArr={setTimeArr}/>
-        </div>
+        <timerContext.Provider value={{ timeArr: timeArr, setTimeArr: setTimeArr }}>
+            <div className='timer-parent'>
+                <Title title={title} />
+                <Timer isLight={isLight} isLightHandle={isLightHandle} />
+                <TimeList />
+            </div>
+        </timerContext.Provider>
     );
 }
 

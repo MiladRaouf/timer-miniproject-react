@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TimeList from "./TimeList";
+import { timerContext } from './TimerContext';
 
 let interval;
 
@@ -14,6 +14,8 @@ class Timer extends React.Component {
             runTime: false,
         }
     }
+
+    static contextType = timerContext;
 
     runTimer = () => {
         if (this.state.runTime === false) {
@@ -60,13 +62,10 @@ class Timer extends React.Component {
         });
     };
 
-    handleSaveTime = ()=>{
-        let h = this.state.hour;
-        let m = this.state.minute;
-        let s = this.state.second;
-        let nowTime = `${h < 10 ? '0' + h : h} : ${m < 10 ? '0' + m : m} : ${s < 10 ? '0' + s : s}`;
+    handleSaveTime = () => {
+        let nowTime = document.querySelector('.timer').innerHTML;
 
-        this.props.setTimeArr([...this.props.timeArr, nowTime]);
+        this.context.setTimeArr([...this.context.timeArr, nowTime]);
     };
 
     render() {
@@ -84,10 +83,6 @@ class Timer extends React.Component {
                     <button className='stop' onClick={this.stopTimer}>Stop</button>
                     <button className='reset' onClick={this.resetTimer}>Reset</button>
                 </div>
-
-                <TimeList>
-                    {this.props.timeArr}
-                </TimeList>
             </div>
         );
     }
